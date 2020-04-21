@@ -131,21 +131,57 @@ exports.tampildtservicedasarid = function (req, res) {
 
 //------------------------------------"TAMBAH DATA"---------------------------------------
 
-//tambahkan data t_user
-exports.tambahUser = function (req, res) {
 
-    var id = req.body.id;
-    var nama = req.body.nama;
+
+
+exports.tambahuser = function (req, res) {
+    var id_user =req.body.id_user;
+    var nama_user = req.body.nama_user;
     var email = req.body.email;
     var password = req.body.password;
     var level = req.body.level;
 
-    connection.query('INSERT INTO tbl_user (id,nama,email,password,level) VALUES(?,?,?,?,?)',[id_user, nama_user, email, password, level],
+    connection.query('INSERT INTO t_user (id_user,nama_user,email,password,level) VALUES(?,?,?,?)',
+
+        [id_user,nama_user,email,password,level],
         function (error, rows, fields) {
             if (error) {
                 console.log(error);
-            } else {
-                response.ok("Berhasil menambah Data", res)
             }
+            else {
+                response.ok(rows, res)
+            }
+
         });
+};
+
+
+
+exports.tambahSparepart = function (req, res) {
+    var id_sparepart= req.body.id_sparepart;
+    var nama_sparepart = req.body.nama_sparepart;
+    var harga_sparepart = req.body.harga_sparepart;
+    var satuan = req.body.satuan;
+
+    connection.query('INSERT INTO t_sparepart (id_sparepart,nama_sparepart,harga_sparepart,satuan) VALUES(?,?,?)',
+
+        [id_sparepart,nama_sparepart,harga_sparepart,satuan],
+        function (error, rows, fields) {
+
+            if (error) {
+
+                console.log(error);
+
+            } else {
+
+                response.ok("Berhasil menambahkan data!", res);
+
+            }
+
+        });
+
+
+
+
+        
 };

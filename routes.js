@@ -27,16 +27,7 @@ module.exports = function(app){
         .get(jsonku.tampildtservicedasarid)
 
 //tambah data
-    app.route('/tambah')
-        .post(jsonku.tambahUser)
-    
-
-    app.route('/ubah')
-        .put(jsonku.ubahDataUser)
-
-    app.route('/hapus')
-        .delete(jsonku.hapusMHS)
-    
-        app.route('/tampilmatakuliah')
-        .get(jsonku.tampilgroupmatakuliah)
+app.route('/tambah')
+    .post(jsonku.tambahuser)
+   
 }
