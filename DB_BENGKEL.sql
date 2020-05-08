@@ -28,6 +28,8 @@ CREATE TABLE `t_level` (
 
 /*Data for the table `t_level` */
 
+insert  into `t_level`(`id_level`,`nama_level`) values (1,'Admin'),(2,'User');
+
 /*Table structure for table `t_montir` */
 
 DROP TABLE IF EXISTS `t_montir`;
@@ -57,7 +59,7 @@ CREATE TABLE `t_service` (
   KEY `id_user` (`id_user`),
   KEY `id_montir` (`id_montir`),
   KEY `id_sparepart` (`id_sparepart`),
-  CONSTRAINT `t_service_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `t_user` (`iduser`),
+  CONSTRAINT `t_service_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `t_user` (`id_user`),
   CONSTRAINT `t_service_ibfk_2` FOREIGN KEY (`id_montir`) REFERENCES `t_montir` (`id_montir`),
   CONSTRAINT `t_service_ibfk_3` FOREIGN KEY (`id_sparepart`) REFERENCES `t_sparepart` (`id_sparepart`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -83,17 +85,19 @@ CREATE TABLE `t_sparepart` (
 DROP TABLE IF EXISTS `t_user`;
 
 CREATE TABLE `t_user` (
-  `iduser` varchar(200) NOT NULL,
+  `id_user` varchar(200) NOT NULL,
   `nama_user` varchar(200) NOT NULL,
   `email` varchar(200) NOT NULL,
   `password` varchar(200) NOT NULL,
   `id_level` int(20) NOT NULL,
-  PRIMARY KEY (`iduser`),
+  PRIMARY KEY (`id_user`),
   KEY `id_level` (`id_level`),
   CONSTRAINT `t_user_ibfk_1` FOREIGN KEY (`id_level`) REFERENCES `t_level` (`id_level`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `t_user` */
+
+insert  into `t_user`(`id_user`,`nama_user`,`email`,`password`,`id_level`) values ('U-01','Kusuma','mail@mail.com','ef86916bc6f9f2f6866df100a192161f',1),('U-02','Dani','kusuma@mail.com','ef86916bc6f9f2f6866df100a192161f',2),('U-06','KAKA','kaka@mail.com','5541c7b5a06c39b267a5efae6628e003',1);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

@@ -1,0 +1,1 @@
+localhost:3000/auth/api/v1/register	//register user
