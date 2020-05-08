@@ -17,7 +17,7 @@ exports.registrasi=function(req,res){
     }
 
     //cek apakah email sudah ada?
-    var query = "SELECT email from ?? WHERE ?? ";
+    var query = "SELECT email from ?? WHERE ??=? ";
     var table = ["t_user", "email", post.email]
 
     query = mysql.format(query,table);
