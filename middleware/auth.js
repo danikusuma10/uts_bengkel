@@ -93,3 +93,7 @@ exports.login = function(req,res){
         }
     });
 }
+
+exports.halamanrahasia = function(req,res){
+    response.ok("Sukses HALAMAN Level = 2!",res);
+}
