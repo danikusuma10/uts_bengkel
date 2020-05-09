@@ -3,7 +3,7 @@ const config = require('../config/secret');
 
 function verifikasi(){
     return function(req, rest, next){
-        var id_level = req.body.id_level;
+        var lvl = req.body.lvl;
         //cek authorizzation header
         var tokenWithBearer = req.headers.authorization;
         if(tokenWithBearer) {
@@ -14,14 +14,11 @@ function verifikasi(){
                 if(err){
                     return rest.status(401).send({auth:false, message:'Token tidak terdaftar!'});
                 }else {
-                    if(id_level == 2){
+                    if(lvl == 2){
                         req.auth = decoded;
                         next();
                     }
-                    else if(id_level == 1){
-                        req.auth = decoded;
-                        next();
-                    }else {
+                    else {
                         return rest.status(401).send({auth:false, message:'Gagal mengotorisasi level anda!'});
                     }
                 }
