@@ -46,7 +46,7 @@ exports.tampilsemuadatamontir = function (req, res) {
 exports.tampildtsparepartdasarid = function (req, res) {
 
     let id = req.params.id;
-    connection.query('SELECT * FROM t_sparepart WHERE id=?', [id],
+    connection.query('SELECT * FROM t_sparepart WHERE id_sparepart=?', [id],
         function (error, rows, fields) {
             if (error) {
                 console.log(error);
@@ -62,7 +62,7 @@ exports.tampildtsparepartdasarid = function (req, res) {
 exports.tampildtmontirdasarid = function (req, res) {
 
     let id = req.params.id;
-    connection.query('SELECT * FROM t_montir WHERE id=?', [id],
+    connection.query('SELECT * FROM t_montir WHERE id_montir=?', [id],
         function (error, rows, fields) {
             if (error) {
                 console.log(error);
