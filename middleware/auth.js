@@ -97,3 +97,41 @@ exports.login = function(req,res){
 exports.halamanrahasia = function(req,res){
     response.ok("Sukses HALAMAN Level = 2!",res);
 }
+                //No.2 POST
+////add data service
+exports.tambahdataservice = function (req, res) {
+    var post = {
+        id_service: req.body.id_service,
+     tgl_service: new Date(),
+     id_user: req.body.id_user,
+     id_montir: req.body.id_montir,
+     id_sparepart: req.body.id_sparepart,
+     jumlah_sparepart: req.body.jumlah_sparepart	
+     
+    }
+      var query = "SELECT id_service FROM ?? WHERE ??=?";
+    var table = ["t_service", "id_service", post.id_service];
+
+    query = mysql.format(query,table);
+
+    connection.query(query, function(error,rows){
+        if(error){
+            console.log(error);
+        }else{
+            if(rows.length == 0){
+                var query = "INSERT INTO ?? SET ?";
+                var table = ["t_service"];
+                query = mysql.format(query,table);
+                connection.query(query, post, function(error, rows){
+                    if(error){
+                        console.log(error);
+                    }else{
+                        response.ok("Successfull add data service !", res);
+                    }
+                });
+            }else{
+                response.ok("have been Posted ! Duplicat entry",res);
+            }
+        }
+    });
+};
