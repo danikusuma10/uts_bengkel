@@ -135,3 +135,18 @@ exports.tambahdataservice = function (req, res) {
         }
     });
 };
+
+
+//Penjumlahan Total service
+exports.totalservis = function (req, res) {
+    connection.query('SELECT t_user.nama_user, t_service.tgl_service, t_montir.nama_montir, t_sparepart.nama_sparepart, t_sparepart.harga_sparepart, t_service.jumlah_sparepart, (hargaperjam + jumlah_sparepart * harga_sparepart) AS total_harga FROM t_service JOIN t_user JOIN t_montir JOIN t_sparepart WHERE t_service.id_user = t_user.id_user AND t_service.id_montir = t_montir.id_montir AND t_service.id_sparepart = t_sparepart.id_sparepart ORDER BY t_user.id_user ',
+        function (error, rows, fields) {
+            if (error) {
+                console.log(error);
+            } else {
+                response.oknested(rows, res);
+            }
+        }
+    )
+
+}
