@@ -7,7 +7,7 @@ var config = require('../config/secret');
 var ip = require('ip');
 
 //controller untuk register
-exports.registrasi=function(req,res){
+exports.register=function(req,res){
     var post ={
         id_user: req.body.id_user,
         nama_user: req.body.nama_user,
@@ -94,9 +94,16 @@ exports.login = function(req,res){
     });
 }
 
-exports.halamanrahasia = function(req,res){
-    response.ok("Sukses HALAMAN Level = 2!",res);
+exports.loginadmin = function(req,res){
+    response.ok("Success Page Level = 1!",res);
 }
+
+exports.loginuser=function(req,res) {
+    response.ok("Success Page Level = 2! ",res);
+}
+
+
+
                 //No.2 POST
 ////add data service
 exports.addservice = function (req, res) {

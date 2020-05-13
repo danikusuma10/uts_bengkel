@@ -1,18 +1,23 @@
 var express = require('express');
 var auth = require('./auth');
 var router = express.Router();
-var verifikasi = require('./verifikasi');
 
-//daftarkan menu registrasi
-router.post('/api/v1/register', auth.registrasi);
+//defined
+var verifadmin = require('./verifikasi');
+var verifuser = require('./verifikasi');
+
+var verifikasi.verifadmin()
+//==============================================================MENU REGISTRASI USER===============================
+router.post('/api/v1/register', auth.register);
 router.post('/api/v1/login', auth.login);
 
 //alamat yang perlu otorisasi
-router.get('/api/v1/rahasia', verifikasi(), auth.halamanrahasia);
+router.get('/api/v1/rahasia',verifuser(), auth.loginuser);
+router.get('/api/v1/rahasia',verifadmin(), auth.loginadmin);
 
 //=====================================================t_service==========================USER======================
 //add data t_service
-router.post('/api/v1/user/addservice',verifuser(),auth.addservice);
+router.post('/api/v1/user/addservice',verifuser(), auth.addservice);
 router.get('/api/v1/user/totalservice',verifuser(), auth.totalservice);
 router.put('/api/v1/user/updateservice',verifuser(), auth.upservice);
 
