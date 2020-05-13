@@ -99,7 +99,7 @@ exports.halamanrahasia = function(req,res){
 }
                 //No.2 POST
 ////add data service
-exports.tambahdataservice = function (req, res) {
+exports.addservice = function (req, res) {
     var post = {
         id_service: req.body.id_service,
      tgl_service: new Date(),
@@ -137,8 +137,8 @@ exports.tambahdataservice = function (req, res) {
 };
 
 
-//Penjumlahan Total service
-exports.totalservis = function (req, res) {
+//count Total service
+exports.totalservice = function (req, res) {
     connection.query('SELECT t_user.nama_user, t_service.tgl_service, t_montir.nama_montir, t_sparepart.nama_sparepart, t_sparepart.harga_sparepart, t_service.jumlah_sparepart, (hargaperjam + jumlah_sparepart * harga_sparepart) AS total_harga FROM t_service JOIN t_user JOIN t_montir JOIN t_sparepart WHERE t_service.id_user = t_user.id_user AND t_service.id_montir = t_montir.id_montir AND t_service.id_sparepart = t_sparepart.id_sparepart ORDER BY t_user.id_user ',
         function (error, rows, fields) {
             if (error) {
@@ -150,3 +150,29 @@ exports.totalservis = function (req, res) {
     )
 
 }
+//update t_service
+exports.upservice = function (req, res) {
+    var tgl = new Date();
+    var id_us = req.body.id_us;
+    var id_mon = req.body.id_mon;
+    var jml_sprpt = req.body.jml_sprpt;
+    var id_sprpt = req.body.id_sprpt;
+    var id_ser = req.body.id_ser;
+    
+    connection.query('UPDATE t_service SET tgl_service=?, id_user=?, id_montir=?,id_sparepart=?, jumlah_sparepart=?  WHERE id_service=?',
+        [ tgl, id_us, id_mon, id_sprpt, jml_sprpt,id_ser], 
+        function (error, rows, fields) {
+            if (error) {
+                console.log(error);
+            } else {
+                response.ok("Successfull Update data service", res)
+            }
+        });
+};
+
+
+
+
+//input data t_montir
+//update data t_montir
+//delete data t_montir
