@@ -18,7 +18,7 @@ router.get('/api/v1/rahasia',verifadmin(), auth.loginadmin);
 //add data t_service
 router.post('/api/v1/user/addservice',verifuser(), auth.addservice);
 router.get('/api/v1/user/totalservice',verifuser(), auth.totalservice);
-router.put('/api/v1/user/updateservice',verifuser(), auth.upservice);
+router.put('/api/v1/user/updateservice',verifadmin(), auth.upservice);
 
 //=====================================================t_montir===========================ADMIN======================
 //post input t_montir
