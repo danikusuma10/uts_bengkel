@@ -97,14 +97,6 @@ exports.login = function(req,res){
     });
 }
 
-exports.loginadmin = function(req,res){
-    response.ok("Success Page Level = 1!",res);
-}
-
-exports.loginuser=function(req,res) {
-    response.ok("Success Page Level = 2! ",res);
-}
-
 
 
                 //No.2 POST
@@ -183,6 +175,53 @@ exports.upservice = function (req, res) {
 
 
 
-//input data t_montir
-//update data t_montir
-//delete data t_montir
+//=====================================================t_montir===========================ADMIN======================
+//post input t_montir
+exports.addmontir = function(req, res) {
+    var post = {
+        id_montir: req.body.id_montir,
+        nama_montir: req.body.nama_montir,
+        hargaperjam: req.body.hargaperjam
+    }
+
+    var query = "SELECT id_montir FROM ?? WHERE ??=?";
+    var table = ["t_montir", "id_montir", post.id_montir];
+
+    query = mysql.format(query,table);
+
+    connection.query(query, function(error,rows){
+        if(error){
+            console.log(error);
+        }else{
+            if(rows.length == 0){
+                var query = "INSERT INTO ?? SET ?";
+                var table = ["t_montir"];
+                query = mysql.format(query,table);
+                connection.query(query, post, function(error, rows){
+                    if(error){
+                        console.log(error);
+                    }else{
+                        response.ok("Success add Montir", res);
+                    }
+                });
+            }else{
+                response.ok("Montir Already Exist!",res);
+            }
+        }
+    });
+};
+//put edit t_montir
+//delete t_montir
+//=====================================================t_sparepart========================ADMIN======================
+//post sparepart
+//put
+//delete
+//=====================================================t_user=============================ADMIN======================
+
+//post user
+//put
+//delete
+//=====================================================t_level============================ADMIN=====================
+//post level
+//put
+//delete
