@@ -2,8 +2,12 @@ var express = require('express');
 var auth = require('./auth');
 var router = express.Router();
 
-var verifadmin = require('./verifadmin');
-var verifuser = require('./verifuser');
+//
+var verifi = require('./verif');
+
+//panggil fungsi
+verifi.verifadmin();
+verifi.verifuser();
 
 
 //==============================================================MENU REGISTRASI USER===============================
@@ -16,9 +20,9 @@ router.get('/api/v1/rahasia',verifadmin(), auth.loginadmin);
 
 //=====================================================t_service==========================USER======================
 //add data t_service
-router.post('/api/v1/user/addservice',verifuser(), auth.addservice);
-router.get('/api/v1/user/totalservice',verifuser(), auth.totalservice);
-router.put('/api/v1/user/updateservice',verifadmin(), auth.upservice);
+router.post('/api/v1/user/addservice',verif(), auth.addservice);
+router.get('/api/v1/user/totalservice',verif(), auth.totalservice);
+router.put('/api/v1/user/updateservice',verif(), auth.upservice);
 
 //=====================================================t_montir===========================ADMIN======================
 //post input t_montir
