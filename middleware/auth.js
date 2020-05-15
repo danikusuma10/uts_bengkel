@@ -6,7 +6,8 @@ var jwt = require('jsonwebtoken');
 var config = require('../config/secret');
 var ip = require('ip');
 
-//masuk ke halaman
+
+
 
 //controller untuk register
 exports.register=function(req,res){
