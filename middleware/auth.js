@@ -305,53 +305,18 @@ exports.deletesparepart = function(req, res){
     });
 };
 //=====================================================t_user=============================ADMIN======================
-//post user
-exports.adduseradm = function(req,res) {
-    var post = {
-        id_user: req.body.id_user,
-        nama_user: req.body.nama_user,
-        email: req.body.email,
-        password: md5(req.body.password),
-        id_level: req.body.id_level
-    }
-
-    var query = "SELECT nama_user FROM ?? WHERE ??=?";
-    var table = ["t_user", "id_user", post.id_user];
-
-    query = mysql.format(query,table);
-
-    connection.query(query, function(error, rows) {
-        if(error){
-            console.log(error);
-        }else {
-            if(rows.length == 0){
-                var query = "INSERT INTO ?? SET ?";
-                var table = ["t_user"];
-                query = mysql.format(query, table);
-                connection.query(query, post, function(error, rows){
-                    if(error){
-                        console.log(error);
-                    }else {
-                        response.ok("Success Added", res);
-                    }
-                });
-            }else {
-                response.ok("User Already Exist",res);
-            }
-        }
-    })
-}
+//post user || REGISTER || ADMIN
 //put
 exports.upuseradm = function (req, res) {
    
-    var id = req.body.id;  
-    var nm = req.body.nm;
-    var mail = req.body.mail;
-    var pass = req.body.pass;
-    var lvl = req.body.lvl;
+    var id_user = req.body.id_user;  
+    var nama_user = req.body.nama_user;
+    var email = req.body.email;
+    var password = md5(req.body.password);
+    var id_level = req.body.id_level;
     
-    connection.query('UPDATE t_user SET  nama_user=?,email=?,password=?,id_level=? WHERE id_user=?',
-        [nm,mail,pass,lvl,id], 
+    connection.query('UPDATE t_user SET nama_user=?,email=?,password=?,id_level=? WHERE id_user=?',
+        [ nama_user,email,password,id_level,id_user], 
         function (error, rows, fields) {
             if (error) {
                 console.log(error);

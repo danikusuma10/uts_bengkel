@@ -33,7 +33,7 @@ router.put('/api/v1/admin/upsparepart',adm, auth.upsparepart);
 router.delete('/api/v1/admin/deletesparepart',adm, auth.deletesparepart);
 //=====================================================t_user=============================ADMIN======================
 //post user
-router.post('/api/v1/admin/adduseradm',adm, auth.adduseradm);
+router.post('/api/v1/register',adm, auth.register);
 //put
 router.put('/api/v1/admin/upuseradm',adm, auth.upuseradm);
 //delete
