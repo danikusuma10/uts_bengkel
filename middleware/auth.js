@@ -326,7 +326,51 @@ exports.upuseradm = function (req, res) {
         });
 };
 //delete
+exports.deleteuseradm = function(req, res){
+    var id = req.body.id_user;
+    connection.query('DELETE FROM t_user WHERE id_user=?', [id],
+    function (error, rows, fields) {
+        if (error) {
+            console.log(error);
+        } else {
+            response.ok("Have been deleted !", res)
+        }
+    });
+};
 //=====================================================t_level============================ADMIN=====================
 //post level
+exports.addlvl = function(req, res) {
+    var post = {
+        id_level:req.body.id_level,
+        nama_level: req.body.nama_level
+    }
+
+    var query = "SELECT nama_level FROM ?? WHERE ??=?";
+    var table = ["t_level", "id_level", post.id_level];
+
+    query = mysql.format(query,table);
+
+    connection.query(query, function(error,rows){
+        if(error){
+            console.log(error);
+        }else{
+            if(rows.length == 0){
+                var query = "INSERT INTO ?? SET ?";
+                var table = ["t_level"];
+                query = mysql.format(query,table);
+                connection.query(query, post, function(error, rows){
+                    if(error){
+                        console.log(error);
+                    }else{
+                        response.ok("Success ADD new Level", res);
+                    }
+                });
+            }else{
+                response.ok("Level Already Exist",res);
+            }
+        }
+    });
+};
+
 //put
 //delete

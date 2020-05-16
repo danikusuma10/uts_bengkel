@@ -37,9 +37,10 @@ router.post('/api/v1/register',adm, auth.register);
 //put
 router.put('/api/v1/admin/upuseradm',adm, auth.upuseradm);
 //delete
-
+router.delete('/api/v1/admin/deleteuseradm',adm, auth.deleteuseradm);
 //=====================================================t_level============================ADMIN=====================
 //post level
+router.post('/api/v1/admin/addlevel',adm, auth.addlvl);
 //put
 //delete
 
