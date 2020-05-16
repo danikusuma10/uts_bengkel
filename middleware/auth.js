@@ -293,6 +293,17 @@ exports.upsparepart = function (req, res) {
         });
 };
 //delete
+exports.deletesparepart = function(req, res){
+    var id = req.body.id_sparepart;
+    connection.query('DELETE FROM t_sparepart WHERE id_sparepart=?', [id],
+    function (error, rows, fields) {
+        if (error) {
+            console.log(error);
+        } else {
+            response.ok("Have been deleted", res)
+        }
+    });
+};
 //=====================================================t_user=============================ADMIN======================
 
 //post user

@@ -30,6 +30,7 @@ router.post('/api/v1/admin/addsparepart',adm, auth.addsparepart);
 //put
 router.put('/api/v1/admin/upsparepart',adm, auth.upsparepart);
 //delete
+router.delete('/api/v1/admin/deletesparepart',adm, auth.deletesparepart);
 //=====================================================t_user=============================ADMIN======================
 
 //post user
