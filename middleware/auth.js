@@ -241,6 +241,40 @@ exports.deletemontir = function(req, res){
 };
 //=====================================================t_sparepart========================ADMIN======================
 //post sparepart
+exports.addsparepart = function(req, res) {
+    var post = {
+        id_sparepart:req.body.id_sparepart,
+        nama_sparepart: req.body.nama_sparepart,
+        harga_sparepart: req.body.harga_sparepart,
+        satuan: req.body.satuan
+    }
+
+    var query = "SELECT nama_sparepart FROM ?? WHERE ??=?";
+    var table = ["t_sparepart", "nama_sparepart", post.id_sparepart];
+
+    query = mysql.format(query,table);
+
+    connection.query(query, function(error,rows){
+        if(error){
+            console.log(error);
+        }else{
+            if(rows.length == 0){
+                var query = "INSERT INTO ?? SET ?";
+                var table = ["t_sparepart"];
+                query = mysql.format(query,table);
+                connection.query(query, post, function(error, rows){
+                    if(error){
+                        console.log(error);
+                    }else{
+                        response.ok("Berhasil menambahkan data Sparepart baru", res);
+                    }
+                });
+            }else{
+                response.ok("Sparepart sudah terdaftar!",res);
+            }
+        }
+    });
+};
 //put
 //delete
 //=====================================================t_user=============================ADMIN======================
