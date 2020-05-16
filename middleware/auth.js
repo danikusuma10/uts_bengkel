@@ -389,3 +389,14 @@ exports.uplevel = function (req, res) {
         });
 };
 //delete
+exports.deletelvl = function(req, res){
+    var id = req.body.id_level;
+    connection.query('DELETE FROM t_level WHERE id_level=?', [id],
+    function (error, rows, fields) {
+        if (error) {
+            console.log(error);
+        } else {
+            response.ok("Have been deleted !", res)
+        }
+    });
+};

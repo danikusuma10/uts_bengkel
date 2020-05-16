@@ -44,6 +44,6 @@ router.post('/api/v1/admin/addlevel',adm, auth.addlvl);
 //put
 router.put('/api/v1/admin/uplevel',adm, auth.uplevel);
 //delete
-
+router.delete('/api/v1/admin/deletelevel',adm, auth.deletelvl);
 
 module.exports = router;
