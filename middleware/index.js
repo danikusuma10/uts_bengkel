@@ -28,6 +28,7 @@ router.delete('/api/v1/admin/deletemontir',adm, auth.deletemontir);
 //post sparepart
 router.post('/api/v1/admin/addsparepart',adm, auth.addsparepart);
 //put
+router.put('/api/v1/admin/upsparepart',adm, auth.upsparepart);
 //delete
 //=====================================================t_user=============================ADMIN======================
 
