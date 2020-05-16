@@ -21,6 +21,7 @@ router.put('/api/v1/admin/updateservice',adm, auth.upservice);
 //post input t_montir
 router.post('/api/v1/admin/addmontir',adm, auth.addmontir);
 //put edit t_montir
+router.put('/api/v1/admin/updatemontir',adm, auth.upmontir);
 //delete t_montir
 
 //=====================================================t_sparepart========================ADMIN======================
