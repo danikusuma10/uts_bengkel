@@ -42,6 +42,7 @@ router.delete('/api/v1/admin/deleteuseradm',adm, auth.deleteuseradm);
 //post level
 router.post('/api/v1/admin/addlevel',adm, auth.addlvl);
 //put
+router.put('/api/v1/admin/uplevel',adm, auth.uplevel);
 //delete
 
 
