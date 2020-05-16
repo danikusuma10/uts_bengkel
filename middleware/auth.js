@@ -213,13 +213,12 @@ exports.addmontir = function(req, res) {
 //put edit t_montir
 exports.upmontir = function (req, res) {
    
-    var id_mon = req.body.id_us;  
-    var nm_mon = req.body.nm_mon;
+    var id = req.body.id;  
+    var nm = req.body.nm;
     var hrg = req.body.hrg;
-  
     
-    connection.query('UPDATE t_montir SET  nama_montir=?,hargaperjam=?  WHERE id_montir=?',
-        [id_mon, nm_mon,hrg], 
+    connection.query('UPDATE t_montir SET  nama_montir=?,hargaperjam=? WHERE id_montir=?',
+        [ nm,hrg,id], 
         function (error, rows, fields) {
             if (error) {
                 console.log(error);
@@ -229,7 +228,17 @@ exports.upmontir = function (req, res) {
         });
 };
 //delete t_montir
-
+exports.deletemontir = function(req, res){
+    var id_montir = req.body.id_montir;
+    connection.query('DELETE FROM t_montir WHERE id_montir=?', [id_montir],
+    function (error, rows, fields) {
+        if (error) {
+            console.log(error);
+        } else {
+            response.ok("Successful deleted", res)
+        }
+    });
+};
 //=====================================================t_sparepart========================ADMIN======================
 //post sparepart
 //put
