@@ -305,8 +305,42 @@ exports.deletesparepart = function(req, res){
     });
 };
 //=====================================================t_user=============================ADMIN======================
-
 //post user
+exports.adduseradm = function(req,res) {
+    var post = {
+        id_user: req.body.id_user,
+        nama_user: req.body.nama_user,
+        email: req.body.email,
+        password: md5(req.body.password),
+        id_level: req.body.id_level
+    }
+
+    var query = "SELECT nama_user FROM ?? WHERE ??=?";
+    var table = ["t_user", "id_user", post.id_user];
+
+    query = mysql.format(query,table);
+
+    connection.query(query, function(error, rows) {
+        if(error){
+            console.log(error);
+        }else {
+            if(rows.length == 0){
+                var query = "INSERT INTO ?? SET ?";
+                var table = ["t_user"];
+                query = mysql.format(query, table);
+                connection.query(query, post, function(error, rows){
+                    if(error){
+                        console.log(error);
+                    }else {
+                        response.ok("Success Added", res);
+                    }
+                });
+            }else {
+                response.ok("User Already Exist",res);
+            }
+        }
+    })
+}
 //put
 //delete
 //=====================================================t_level============================ADMIN=====================

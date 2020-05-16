@@ -32,10 +32,12 @@ router.put('/api/v1/admin/upsparepart',adm, auth.upsparepart);
 //delete
 router.delete('/api/v1/admin/deletesparepart',adm, auth.deletesparepart);
 //=====================================================t_user=============================ADMIN======================
-
 //post user
+router.post('/api/v1/admin/adduseradm',adm, auth.adduseradm);
 //put
+
 //delete
+
 //=====================================================t_level============================ADMIN=====================
 //post level
 //put
