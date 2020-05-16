@@ -342,6 +342,24 @@ exports.adduseradm = function(req,res) {
     })
 }
 //put
+exports.upuseradm = function (req, res) {
+   
+    var id = req.body.id;  
+    var nm = req.body.nm;
+    var mail = req.body.mail;
+    var pass = req.body.pass;
+    var lvl = req.body.lvl;
+    
+    connection.query('UPDATE t_user SET  nama_user=?,email=?,password=?,id_level=? WHERE id_user=?',
+        [nm,mail,pass,lvl,id], 
+        function (error, rows, fields) {
+            if (error) {
+                console.log(error);
+            } else {
+                response.ok("Successfull Update data User", res)
+            }
+        });
+};
 //delete
 //=====================================================t_level============================ADMIN=====================
 //post level

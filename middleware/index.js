@@ -35,7 +35,7 @@ router.delete('/api/v1/admin/deletesparepart',adm, auth.deletesparepart);
 //post user
 router.post('/api/v1/admin/adduseradm',adm, auth.adduseradm);
 //put
-
+router.put('/api/v1/admin/upuseradm',adm, auth.upuseradm);
 //delete
 
 //=====================================================t_level============================ADMIN=====================
